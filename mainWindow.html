@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Prototype</title>
+</head>
+<body>
+    <form>
+    <h1>Login with Discord</h1>
+        <input type="email" id="emailField" placeholder="Enter email" class="text-field">
+        <input type="password" id="passwordField" placeholder="Password" name="password"/>
+        <button type="submit" id="loginButton">Login</button>
+    </form>
+
+    <script>
+        const electron = require('electron');
+        const {ipcRenderer} = electron;
+
+        const email = document.getElementById("emailField").value;
+        const password = document.getElementById("passwordField").value;
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', submitForm);
+
+        const secondWindow = 'secondWindow'
+
+        function submitForm(e) {
+            e.preventDefault();
+            if(email !== null && password !== null) {
+                createAuthWindow();
+                //ipcRenderer.send('changeWindow', secondWindow);
+            }
+        }
+        
+    </script>
+</body>
+</html>
